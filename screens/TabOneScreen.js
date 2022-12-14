@@ -8,6 +8,21 @@ export default function TabTwoScreen() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Not yet scanned')
+  const axios = require('axios').default
+  const newPost = {
+    machineid: text,
+    title: 'A new post',
+    wallet: 12
+  };
+  const sendPostRequest = async () => {
+    try {
+        const resp = await axios.post('http://192.168.1.35:3000/test', newPost);
+        console.log(resp.data);
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+};
   const askForCameraPermission = () => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -23,6 +38,8 @@ export default function TabTwoScreen() {
     setScanned(true);
     setText(data)
     console.log('Type: ' + type + '\nData: ' + data)
+    
+    
   };
   // Check permissions and return the screens
   if (hasPermission === null) {
@@ -49,7 +66,9 @@ export default function TabTwoScreen() {
       </View>
       <Text style={styles.maintext}>{text}</Text>
 
-      {scanned && <Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' />}
+      {scanned && <Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' /> }
+      <Button title="start machine" onPress={sendPostRequest} />
+      
     </View>
   );
 }

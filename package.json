@@ -21,11 +21,13 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "@walletconnect/react-native-dapp": "^1.7.0",
+    "axios": "^1.0.0",
     "base-64": "^1.0.0",
     "caniuse-lite": "^1.0.30001439",
     "crypto-browserify": "^3.12.0",
     "expo": "^45.0.0",
     "expo-asset": "~8.5.0",
+    "expo-barcode-scanner": "~12.1.0",
     "expo-constants": "~13.1.1",
     "expo-font": "~10.1.0",
     "expo-linking": "~3.1.0",
@@ -47,8 +49,7 @@
     "readable-stream": "^3.6.0",
     "stream-http": "^3.2.0",
     "vm-browserify": "^1.1.2",
-    "xml2js": "^0.4.23",
-    "expo-barcode-scanner": "~12.1.0"
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
