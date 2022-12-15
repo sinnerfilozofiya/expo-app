@@ -8,18 +8,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName, Pressable , Image } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../screens/ModalScreen';
+import ModalScreen from '../screens/ModalScreen'; ///this changed to wallet log in/out 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import Login from '../screens/Login'
+/*import Login from '../screens/Login'*/
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
-
+import imagepath from '../constants/imagepath';
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
@@ -39,12 +39,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="Bottom" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+
+      
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+      <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
+
     </Stack.Navigator>
   );
 }
@@ -60,16 +62,29 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
+
+
+
       initialRouteName="TabOne"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+
+        tabBarStyle:{
+          borderRadius : 1 ,
+          bottom : 20,
+          marginHorizontal : 16,
+          backgroundColor:'pink',
+
+        }
       }}>
+
       <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'main menue',
+          tabBarIcon: ({ color }) => <TabBarIcon name="recycle" color={color} />,
+
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -90,10 +105,21 @@ function BottomTabNavigator() {
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
+         // title: 'wallet',
+          tabBarIcon: ({ focused }) =>{
+           return(
+            <Image source={imagepath.testiconnn} />
+
+            )
+          }
+       
+          }}
       />
+      
+   
+
+
+
     </BottomTab.Navigator>
   );
 }

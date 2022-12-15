@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
@@ -28,23 +29,26 @@ export default function Login({ navigation }: RootTabScreenProps<'TabOne'>) {
     navigation.navigate('Bottom')
   }
   return (
+
+    
     <View style={styles.container}>
-      <Text style={styles.title}>wallet</Text>
+
+
+      <Text style={styles.title}> WELCOME</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      {!connector.connected && (
-        <TouchableOpacity onPress={connectWallet} style={styles.buttonStyle}>
-          <Text style={styles.buttonTextStyle}>Connect a Wallet</Text>
-        </TouchableOpacity>
-      )}
-      {!!connector.connected && (
-        <>
-        <Text>{shortenAddress(connector.accounts[0])}</Text>
-        <TouchableOpacity onPress={loginPressed} style={styles.buttonStyle}>
+
+       
+     
+      <TouchableOpacity onPress={loginPressed} style={styles.buttonStyle}>
           <Text style={styles.buttonTextStyle}>welcome</Text>
         </TouchableOpacity>
-      </>
-      )}
+
+
+
+
+
     </View>
+    
   );
 }
 
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginVertical: 30,
-    height: 1,
+    height:10 ,
     width: '80%',
   },
   buttonStyle: {
@@ -84,3 +88,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
+*/
